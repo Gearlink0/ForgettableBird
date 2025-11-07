@@ -5,11 +5,13 @@ namespace XRL.World.Parts.Mutation
   [Serializable]
   public class Gearlink_FORGETTABLE_ObjectImpermanence : BaseMutation
   {
-    public bool observed;
+    public bool Observed;
+    public bool SeenOnce;
     public Gearlink_FORGETTABLE_ObjectImpermanence()
     {
       base.Type = "Mental";
-      this.observed = true;
+      this.Observed = true;
+      this.SeenOnce = false;
     }
 
     public override bool CanLevel() => false;
@@ -28,7 +30,7 @@ namespace XRL.World.Parts.Mutation
     public override bool HandleEvent(BeforeApplyDamageEvent E)
     {
       if (E.Actor.IsPlayer())
-        this.observed = true;
+        this.Observed = true;
       return base.HandleEvent(E);
     }
     public override void Register(GameObject Object, IEventRegistrar Registrar)
@@ -42,8 +44,10 @@ namespace XRL.World.Parts.Mutation
     {
       if (E.ID == "BeforeTakeAction")
       {
-        if (this.observed && !The.Player.HasLOSTo(this.ParentObject))
-          this.observed = false;
+        if (this.SeenOnce && this.Observed && !The.Player.HasLOSTo(this.ParentObject))
+          this.Observed = false;
+        if (!this.SeenOnce && The.Player.HasLOSTo(this.ParentObject))
+          this.SeenOnce = true;
       }
       else if (E.ID == "CustomRender")
       { 
@@ -51,7 +55,7 @@ namespace XRL.World.Parts.Mutation
         if (cell != null)
         {
           LightLevel light = cell.GetLight();
-          if (observed || light == LightLevel.LitRadar || light == LightLevel.Radar || light == LightLevel.Interpolight || light == LightLevel.Omniscient)
+          if (Observed || light == LightLevel.LitRadar || light == LightLevel.Radar || light == LightLevel.Interpolight || light == LightLevel.Omniscient)
             this.ParentObject.Render.Visible = true;
           else
             this.ParentObject.Render.Visible = false;

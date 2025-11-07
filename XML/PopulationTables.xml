@@ -6,21 +6,21 @@
   <population Name="JungleZoneGlobals" Load="Merge">
     <group Name="CreatureEncounter" Load="Merge">
       <group Name="Creatures" Load="Merge">
-        <object Chance="100" Number="1" Blueprint="Gearlink_FORGETTABLE_LesserPrismacaw" />
+        <object Chance="5" Number="1" Blueprint="Gearlink_FORGETTABLE_LesserPrismacaw" />
       </group>
 		</group>
   </population>
 
   <population Name="RuinsZoneGlobals-Creatures" Load="Merge">
-		<object Chance="100" Number="1" Blueprint="Gearlink_FORGETTABLE_LesserPrismacaw" />
+		<object Chance="5" Number="1" Blueprint="Gearlink_FORGETTABLE_LesserPrismacaw" />
   </population>
 
 	<population Name="DeepJungleZoneGlobals-Creatures" Load="Merge">
-		<object Chance="100" Number="1" Blueprint="Gearlink_FORGETTABLE_GreaterPrismacaw" />
+		<object Chance="5" Number="1" Blueprint="Gearlink_FORGETTABLE_GreaterPrismacaw" />
 	</population>
 
 	<population Name="BaroqueRuinsZoneGlobals-Creatures" Load="Merge">
-		<object Chance="100" Number="1" Blueprint="Gearlink_FORGETTABLE_GreaterPrismacaw" />
+		<object Chance="5" Number="1" Blueprint="Gearlink_FORGETTABLE_GreaterPrismacaw" />
 	</population>
 
 	<!-- Make it so prismacaws are potential lair owners in the jungle, ruins, deep jungle, and baroque
